@@ -1,10 +1,7 @@
-import type { NextPage } from 'next'
-
+import { NextPage } from "next";
 
 const Home: NextPage = () => {
-  return (
-    <h1>clima</h1>
-  )
-}
+  return <div></div>;
+};
 
-export default Home
+export default Home;
