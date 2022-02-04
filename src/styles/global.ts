@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
     
+<<<<<<< HEAD:styles/global.ts
 :root {
   --white: #F2F2F2;
   
@@ -18,6 +19,9 @@ export const GlobalStyle = createGlobalStyle`
   --red-200: #f2507b;
 }
   *{
+=======
+*{
+>>>>>>> d378a5f4aebf8afdc55cf736c836cf174a00c8b2:src/styles/global.ts
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -52,7 +56,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body, input, textarea, select, button{
   font: 400 1rem 'Roboto', sans-serif;
-}
+ } 
 
   button {
     cursor: pointer;
@@ -62,4 +66,4 @@ export const GlobalStyle = createGlobalStyle`
     color: inherit;
     text-decoration: none;
   }
-`
+`;
