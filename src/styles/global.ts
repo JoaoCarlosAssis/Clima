@@ -6,11 +6,13 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
   }
+
   body {
-    background: var(--gray-900);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
   }
+
+  
   body::-webkit-scrollbar {
     width: 0.3rem;
   }
