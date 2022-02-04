@@ -1,27 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
     
-<<<<<<< HEAD:styles/global.ts
-:root {
-  --white: #F2F2F2;
-  
-  --gray-100: #e1e1e6;
-  --gray-300: #a8a8b3;
-  --gray-700: #202024;
-  --gray-800: #29292e;
-  --gray-850: #1f2729;
-  --gray-900: #121214;
-  --cyan-500: #61dafb;
-  --cyan-200: #04D9D9; 
-  --yellow-200: #f2aa52;
-  --yellow-500: #eba417;
-  --orange-500: #F26849;
-  --red-200: #f2507b;
-}
-  *{
-=======
 *{
->>>>>>> d378a5f4aebf8afdc55cf736c836cf174a00c8b2:src/styles/global.ts
     margin: 0;
     padding: 0;
     box-sizing: border-box;
