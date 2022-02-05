@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { colors } from "../constants/colors";
 export const GlobalStyle = createGlobalStyle`
     
 *{
@@ -8,6 +9,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    color: ${colors.white};
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
   }
