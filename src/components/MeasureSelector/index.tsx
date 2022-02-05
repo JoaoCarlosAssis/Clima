@@ -12,12 +12,18 @@ export const MeasurementSelector: React.FC = () => {
   return (
     <Selector>
       <SelectorItem
+        role={"button"}
+        aria-label="Change measure to celsius"
+        tabIndex={0}
         onClick={() => setMeasure(Measurements.celsius)}
         isSelected={measure === Measurements.celsius}
       >
         ℃
       </SelectorItem>
       <SelectorItem
+        role={"button"}
+        aria-label="Change measure to fahrenheit"
+        tabIndex={0}
         onClick={() => setMeasure(Measurements.fahrenheit)}
         isSelected={measure === Measurements.fahrenheit}
       >
