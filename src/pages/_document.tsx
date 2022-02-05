@@ -10,6 +10,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;500;700&display=swap"
             rel="stylesheet"
           />
+          <title>Weather - Home</title>
         </Head>
         <body>
           <Main />
