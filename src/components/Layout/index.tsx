@@ -1,7 +1,13 @@
-import styled from "styled-components";
+import { Header } from "../Header";
+import { Container, Main } from "./styles";
 
-const Container = styled.div``;
-
-export const Layout = () => {
-  return <Container></Container>;
+export const Layout: React.FC = ({ children }) => {
+  return (
+    <Container>
+      <Main>
+        <Header />
+        {children}
+      </Main>
+    </Container>
+  );
 };
