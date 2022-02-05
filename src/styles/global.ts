@@ -35,7 +35,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body, input, textarea, select, button{
-  font: 400 1rem 'Raleway', sans-serif;
+  font: 400 1rem 'Roboto', sans-serif;
  } 
 
   button {
