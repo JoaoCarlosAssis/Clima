@@ -1,12 +1,13 @@
-import styled from "styled-components";
-import { Sidebar } from "../Sidebar";
+import { Header } from "../Header";
+import { Container, Main } from "./styles";
 
-const Container = styled.div``;
-
-export const Layout = () => {
+export const Layout: React.FC = ({ children }) => {
   return (
     <Container>
-      <Sidebar />
+      <Main>
+        <Header />
+        {children}
+      </Main>
     </Container>
-  )
+  );
 };
