@@ -1,10 +1,10 @@
 import { MeasurementSelector } from "../MeasureSelector";
-import { Container } from "./styles";
+import { HeaderContainer } from "./styles";
 
 export const Header = () => {
   return (
-    <Container>
+    <HeaderContainer>
       <MeasurementSelector />
-    </Container>
+    </HeaderContainer>
   );
 };
