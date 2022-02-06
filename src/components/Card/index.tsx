@@ -1,4 +1,4 @@
-import { CardContainer, CardImage } from "./styles";
+import { CardContainer, CardImage, CardTitle } from "./styles";
 import Image from "next/image";
 
 interface ICard {
@@ -9,7 +9,7 @@ interface ICard {
 export const Card: React.FC<ICard> = ({ cardHeader, cardImage, children }) => {
   return (
     <CardContainer>
-      <h2>{cardHeader}</h2>
+      <CardTitle>{cardHeader}</CardTitle>
       {cardImage && (
         <CardImage>
           <Image sizes="10vw" layout="responsive" src={cardImage} />
