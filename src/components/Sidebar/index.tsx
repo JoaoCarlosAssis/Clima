@@ -5,7 +5,6 @@ import {
   ContentSidebar,
   FooterSidebar,
   HeaderSidebar,
-  LatestResearch,
   MainContentSidebar,
   SearchLocationContent,
   SidebarContainer,
@@ -16,9 +15,10 @@ import { colors } from "../../constants/colors";
 import ImgClima from "../../assets/Shower.png";
 import Image from "next/image";
 import { useState } from "react";
+import { InputSelect } from '../InputSelect';
 export function Sidebar() {
   const [searchLocationIsActive, setSearchLocationIsActive] = useState(false)
-
+  const [searchValue, setSearchValue] = useState('')
   return (
 
     <SidebarContainer aria-label="Weather Info">
@@ -30,23 +30,16 @@ export function Sidebar() {
             
             <div>
               <AiOutlineSearch />
-              <input type="text" placeholder='search location' />
+              <input 
+                type="text" 
+                placeholder='search location' 
+                value={searchValue} 
+                onChange={event => setSearchValue(event.target.value)}/>
             </div>
-            <button onClick={() => console.log('search')}>Search</button>
+            <button onClick={() => console.log({searchValue})}>Search</button>
           </SearchLocationContent>
-            <select >
-              <option value="London">London</option>
-              <option value="London">London</option>
-              <option value="London">London</option>
-              <option value="London">London</option>
-              <option value="London">London</option>
-            </select>
 
-            <LatestResearch>
-              <span>Barcelona</span>
-              <span>Long Beach</span>
-            </LatestResearch>
-
+          <InputSelect/>
         </ContainerSearchLocation>
 
       ) : (

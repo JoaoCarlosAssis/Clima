@@ -77,16 +77,6 @@ export const FooterSidebar = styled.footer`
 
 export const ContainerSearchLocation = styled.div`
   position: relative;
-
-  select{
-    border: 1px solid ${colors.gray};
-    width: 100%;
-    height: 2.5rem;
-    background: transparent;
-    color: ${colors.white};
-    outline: none;
-    padding: 0.5rem;
-  }
 `;
 
 export const ButtonClose = styled.button`
@@ -142,13 +132,12 @@ gap: 0.5rem;
     padding: 0 0.5rem;
     font-weight: 600;
   }
-
-  
 `;
+
 
 export const LatestResearch = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  margin-top: 2rem
+  margin-top: 2rem;
 `
