@@ -19,12 +19,12 @@ export const WeatherCardList = () => {
       minTemp: "15°C",
     },
     {
-      dayOfTheWeek: "Tomorrow",
+      dayOfTheWeek: "Mon, 9 Jun",
       maxTemp: "20°C",
       minTemp: "15°C",
     },
     {
-      dayOfTheWeek: "Tomorrow",
+      dayOfTheWeek: "Mon, 10 Jun",
       maxTemp: "20°C",
       minTemp: "15°C",
     },
