@@ -9,16 +9,21 @@ import {
   SearchLocationContent,
   SidebarContainer,
 } from "./styles";
-import { MdGpsFixed, MdLocationOn } from "react-icons/md";
+import { MdLocationOn } from "react-icons/md";
 import { Button } from "../Button";
 import { colors } from "../../constants/colors";
 import ImgClima from "../../assets/Shower.png";
 import Image from "next/image";
 import { useState } from "react";
 import { InputSelect } from '../InputSelect';
+import { GeolocationButton } from '../GeolocationButton';
+import { useGetLocationContext } from '../../contexts/GetLocation';
 export function Sidebar() {
   const [searchLocationIsActive, setSearchLocationIsActive] = useState(false)
   const [searchValue, setSearchValue] = useState('')
+  const {location} = useGetLocationContext()
+  console.log(location)
+
   return (
 
     <SidebarContainer aria-label="Weather Info">
@@ -26,46 +31,41 @@ export function Sidebar() {
         <ContainerSearchLocation>
           <ButtonClose type="button" onClick={() => setSearchLocationIsActive(false)}><AiOutlineClose /></ButtonClose>
 
-          <SearchLocationContent>
-            
+          <SearchLocationContent >
+
             <div>
               <AiOutlineSearch />
-              <input 
-                type="text" 
-                placeholder='search location' 
-                value={searchValue} 
-                onChange={event => setSearchValue(event.target.value)}/>
+              <input
+                type="text"
+                placeholder='search location'
+                value={searchValue}
+                onChange={event => setSearchValue(event.target.value)} />
             </div>
-            <button onClick={() => console.log({searchValue})}>Search</button>
+            <button onClick={() => console.log({ searchValue })}>Search</button>
           </SearchLocationContent>
 
-          <InputSelect/>
+          <InputSelect />
         </ContainerSearchLocation>
 
       ) : (
         <ContentSidebar>
           <HeaderSidebar>
             <Button ButtonColor={colors.gray} onClick={() => setSearchLocationIsActive(true)}>Search for places</Button>
-            <MdGpsFixed aria-label="Get current location" />
+            <GeolocationButton />
           </HeaderSidebar>
           <MainContentSidebar>
-            <Image
-              alt="Weather state"
-              draggable={false}
-              src={ImgClima}
-              width={150}
-              height={170}
-            />
+            <img src={location?.current.condition.icon} alt={location?.current.condition.text} />
+            
             <strong>
               15<span>ºc</span>
             </strong>
-            <p>Shower</p>
+            <p>{location?.current.condition.text}</p>
           </MainContentSidebar>
 
           <FooterSidebar>
-            <span>Today - Fri, 5 jun</span>
+            <span>{location?.location.localtime}</span>
             <div>
-              <MdLocationOn /> Helsinki
+              <MdLocationOn /> {location?.location.name}
             </div>
           </FooterSidebar>
         </ContentSidebar>

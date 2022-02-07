@@ -14,16 +14,6 @@ export const HeaderSidebar = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  svg {
-    width: 35px;
-    height: 35px;
-    color: ${colors.white};
-
-    background: ${colors.gray};
-    border-radius: 50%;
-    padding: 0.5rem;
-  }
 `;
 
 export const ContentSidebar = styled.div`
@@ -66,14 +56,16 @@ export const FooterSidebar = styled.footer`
   align-items: center;
 
   div {
+    display: flex;
     margin-top: 1rem;
     align-items: center;
     svg {
       font-size: 1.2rem;
-      margin-right: 0.5rem;
+      margin-right: 0.3rem;
     }
   }
 `;
+
 
 export const ContainerSearchLocation = styled.div`
   position: relative;
