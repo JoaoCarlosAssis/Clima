@@ -49,8 +49,8 @@ export function GetLocationContextProvider({ children }: GetLocationContextProps
           await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=661026bef3784058b4b161650220602&q=${coords.latitude},${coords.longitude}&days=5&aqi=yes&alerts=yes`)
             .then(response => setLocation(response.data))
             setContextState(States.completed)
-        }, function (err) {
-          axios.get(`https://api.weatherapi.com/v1/forecast.json?key=661026bef3784058b4b161650220602&q=paris&days=5&aqi=yes&alerts=yes`)
+        }, async function (err) {
+          await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=661026bef3784058b4b161650220602&q=paris&days=5&aqi=yes&alerts=yes`)
             .then(response => setLocation(response.data))
             setContextState(States.completed)
         })

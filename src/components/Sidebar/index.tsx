@@ -1,5 +1,5 @@
 import { AiOutlineClose, AiOutlineSearch } from 'react-icons/ai'
-import {Rings, TailSpin} from 'react-loader-spinner'
+import {Rings} from 'react-loader-spinner'
 import {
   ButtonClose,
   ContainerSearchLocation,
@@ -23,8 +23,6 @@ export function Sidebar() {
   const [searchLocationIsActive, setSearchLocationIsActive] = useState(false)
   const [searchValue, setSearchValue] = useState('')
   const {location, contextState} = useGetLocationContext()
-  console.log(location)
-  console.log(contextState)
   return (
     
     <SidebarContainer aria-label="Weather Info">

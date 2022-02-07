@@ -30,7 +30,9 @@ export const MainContentSidebar = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  img{
+      width: 69px;
+  }
   strong {
     color: ${colors.white};
     font-size: 7rem;
@@ -41,12 +43,14 @@ export const MainContentSidebar = styled.div`
       font-weight: 400;
       color: ${colors.lightGrey};
     }
+    
   }
 
   p {
     font-size: 2.25rem;
     font-weight: 600;
     padding: 2rem;
+    text-align: center;
   }
 `;
 
