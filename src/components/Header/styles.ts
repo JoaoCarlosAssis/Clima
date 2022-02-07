@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
-export const Container = styled.header`
+export const HeaderContainer = styled.header`
   width: 100%;
+  margin-bottom: 60px;
   display: flex;
   justify-content: end;
 `;

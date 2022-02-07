@@ -4,11 +4,12 @@ import { ButtonContainer } from "./style"
 export type ButtonProps = {
   children: ReactNode,
   ButtonColor?: string,
+  onClick: () => void,
 }
 
-export function Button({children, ButtonColor}: ButtonProps){
+export function Button({children, ButtonColor, onClick}: ButtonProps){
   return(
-    <ButtonContainer ButtonColor={ButtonColor}>
+    <ButtonContainer ButtonColor={ButtonColor} onClick={onClick}>
       {children}
     </ButtonContainer>
   )

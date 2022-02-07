@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { colors } from "../constants/colors";
 export const GlobalStyle = createGlobalStyle`
     
 *{
@@ -8,23 +9,32 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    color: ${colors.white};
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
   }
 
+
+::-webkit-scrollbar {
+  width: 0.3rem;
+}
+
+
+::-webkit-scrollbar-track {
+  background: ${colors.white};
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: ${colors.gray};
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: ${colors.yellow};
+}
   
-  body::-webkit-scrollbar {
-    width: 0.3rem;
-  }
-
-  body::-webkit-scrollbar-track {
-    background: var(--background);
-  }
-
-  body::-webkit-scrollbar-thumb {
-    background-color: var(--yellow-500);
-    border-radius: 2rem;
-  }
+  
 
   html {
     @media (max-width: 1080px) {
