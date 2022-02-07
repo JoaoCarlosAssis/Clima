@@ -1825,6 +1825,11 @@ react-is@^16.13.1, react-is@^16.7.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-loader-spinner@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/react-loader-spinner/-/react-loader-spinner-5.1.2.tgz#682d575463a19bd519bd28ec02285e14c052b411"
+  integrity sha512-uQ6bKEjvTrvTUcBW79dSiCTdtPf+6XOYWhOqDRByMb1SkiUtxctkQZvSu7dnPAE8J5j554KSFnnjOhOoWrJrxg==
+
 react@17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"

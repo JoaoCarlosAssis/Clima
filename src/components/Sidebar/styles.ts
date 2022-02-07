@@ -133,3 +133,11 @@ export const LatestResearch = styled.div`
   gap: 2rem;
   margin-top: 2rem;
 `
+
+export const LoaderSpinnerContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+`

@@ -1,10 +1,12 @@
 import { AiOutlineClose, AiOutlineSearch } from 'react-icons/ai'
+import {Rings, TailSpin} from 'react-loader-spinner'
 import {
   ButtonClose,
   ContainerSearchLocation,
   ContentSidebar,
   FooterSidebar,
   HeaderSidebar,
+  LoaderSpinnerContainer,
   MainContentSidebar,
   SearchLocationContent,
   SidebarContainer,
@@ -12,22 +14,22 @@ import {
 import { MdLocationOn } from "react-icons/md";
 import { Button } from "../Button";
 import { colors } from "../../constants/colors";
-import ImgClima from "../../assets/Shower.png";
-import Image from "next/image";
 import { useState } from "react";
 import { InputSelect } from '../InputSelect';
 import { GeolocationButton } from '../GeolocationButton';
 import { useGetLocationContext } from '../../contexts/GetLocation';
+
 export function Sidebar() {
   const [searchLocationIsActive, setSearchLocationIsActive] = useState(false)
   const [searchValue, setSearchValue] = useState('')
-  const {location} = useGetLocationContext()
+  const {location, contextState} = useGetLocationContext()
   console.log(location)
-
+  console.log(contextState)
   return (
-
+    
     <SidebarContainer aria-label="Weather Info">
-      {searchLocationIsActive ? (
+      
+      {searchLocationIsActive ?  (
         <ContainerSearchLocation>
           <ButtonClose type="button" onClick={() => setSearchLocationIsActive(false)}><AiOutlineClose /></ButtonClose>
 
@@ -48,7 +50,14 @@ export function Sidebar() {
         </ContainerSearchLocation>
 
       ) : (
+        
         <ContentSidebar>
+        {contextState === 'loading' ? (
+          <LoaderSpinnerContainer>
+            <Rings ariaLabel="loading-indicator" color={colors.lightBlue} />
+          </LoaderSpinnerContainer>
+        ) : (
+          <>
           <HeaderSidebar>
             <Button ButtonColor={colors.gray} onClick={() => setSearchLocationIsActive(true)}>Search for places</Button>
             <GeolocationButton />
@@ -63,13 +72,20 @@ export function Sidebar() {
           </MainContentSidebar>
 
           <FooterSidebar>
-            <span>{location?.location.localtime}</span>
-            <div>
-              <MdLocationOn /> {location?.location.name}
-            </div>
+          
+            
+             <span>{location?.location.localtime}</span>
+             <div>
+               <MdLocationOn /> {location?.location.name}
+             </div>
+             
+           
           </FooterSidebar>
+          </>
+          )}
         </ContentSidebar>
       )}
     </SidebarContainer>
+    
   );
 }
