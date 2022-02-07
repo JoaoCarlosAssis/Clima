@@ -1,4 +1,5 @@
 import { HightlightCard, IHightlightCard } from "../HightlightCard";
+import { HumidityBar } from "../HumidityBar";
 import { HightlightList, HightlightListContainer } from "./styles";
 
 export const HightlightCardList = () => {
@@ -14,10 +15,10 @@ export const HightlightCardList = () => {
     {
       title: "Humidity",
       mainContent: {
-        text: "84",
+        text: "24",
         smallText: "%",
       },
-      footerContent: "HumidityBarComponent",
+      footerContent: <HumidityBar percentage={24} />,
     },
     {
       title: "Visibility",

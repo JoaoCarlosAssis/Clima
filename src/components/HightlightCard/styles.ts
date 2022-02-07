@@ -11,4 +11,10 @@ export const HightlightCardText = styled.h1`
   }
 `;
 
-export const HightlightCardFooter = styled.div``;
+export const HightlightCardFooter = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+`;
