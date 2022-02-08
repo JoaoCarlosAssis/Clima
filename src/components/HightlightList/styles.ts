@@ -14,4 +14,8 @@ export const HightlightList = styled.section`
   height: 90%;
   width: 100%;
   gap: 48px;
+  @media (max-width: 920px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;

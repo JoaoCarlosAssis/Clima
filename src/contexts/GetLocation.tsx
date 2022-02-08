@@ -46,10 +46,10 @@ export function GetLocationContextProvider({
               .then((response) => setLocation(response.data));
             setContextState(States.completed);
           },
-          async function (err) {
+          async function () {
             await axios
               .get(
-                `https://api.weatherapi.com/v1/forecast.json?key=661026bef3784058b4b161650220602&q=paris&days=5&aqi=yes&alerts=yes`
+                `https://api.weatherapi.com/v1/forecast.json?key=661026bef3784058b4b161650220602&q=divinopolis&days=5&aqi=yes&alerts=yes`
               )
               .then((response) => setLocation(response.data));
             setContextState(States.completed);
@@ -58,6 +58,8 @@ export function GetLocationContextProvider({
       }
     }, 5000);
   }, []);
+
+  console.log(location)
   return (
     <GetLocationContext.Provider
       value={{

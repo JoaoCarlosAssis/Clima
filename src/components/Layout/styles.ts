@@ -6,14 +6,20 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
   background: ${colors.darkBlue};
+  @media (max-width: 920px) {
+    flex-direction: column;
+  }
 `;
 
 export const Main = styled.main`
-  display: flex;
-  width: 100%;
-  height: 100%;
-  overflow-y: scroll;
-  flex-direction: column;
-  padding: 150px 125px;
-  padding-top: 45px;
+  @media (min-width: 920px) {
+    overflow-y: scroll;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    padding: 150px 125px;
+    padding-top: 45px;
+  }
+  padding: 50px;
 `;
