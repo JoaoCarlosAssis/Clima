@@ -12,15 +12,13 @@ import {
 import { MdLocationOn } from "react-icons/md";
 import { Button } from "../Button";
 import { colors } from "../../constants/colors";
-import { useState } from "react";
 import { InputSelect } from '../InputSelect';
 import { GeolocationButton } from '../GeolocationButton';
 import { useGetLocationContext } from '../../contexts/GetLocation';
 
 export function Sidebar() {
-  const [searchLocationIsActive, setSearchLocationIsActive] = useState(false)
-  const [searchValue, setSearchValue] = useState('')
-  const {location} = useGetLocationContext()
+  
+  const {location, searchLocation, searchInput, setSearchInput, searchLocationIsActive, setSearchLocationIsActive} = useGetLocationContext()
   return (
     
     <SidebarContainer aria-label="Weather Info">
@@ -36,10 +34,10 @@ export function Sidebar() {
               <input
                 type="text"
                 placeholder='search location'
-                value={searchValue}
-                onChange={event => setSearchValue(event.target.value)} />
+                value={searchInput}
+                onChange={event => setSearchInput(event.target.value)} />
             </div>
-            <button onClick={() => console.log({ searchValue })}>Search</button>
+            <button onClick={searchLocation}>Search</button>
           </SearchLocationContent>
 
           <InputSelect />
