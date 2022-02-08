@@ -8,6 +8,9 @@ export const SidebarContainer = styled.aside`
   background: ${colors.blue};
 
   padding: 2rem;
+  @media (max-width: 920px){
+  width: 100%;  
+}
 `;
 
 export const HeaderSidebar = styled.div`
@@ -30,8 +33,8 @@ export const MainContentSidebar = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  img{
-      width: 69px;
+  img {
+    width: 69px;
   }
   strong {
     color: ${colors.white};
@@ -43,7 +46,6 @@ export const MainContentSidebar = styled.div`
       font-weight: 400;
       color: ${colors.lightGrey};
     }
-    
   }
 
   p {
@@ -70,7 +72,6 @@ export const FooterSidebar = styled.footer`
   }
 `;
 
-
 export const ContainerSearchLocation = styled.div`
   position: relative;
 `;
@@ -88,14 +89,12 @@ export const ButtonClose = styled.button`
   &:hover {
     filter: brightness(0.7);
   }
-
-  
 `;
 
 export const SearchLocationContent = styled.div`
-padding: 3rem 0;
-display: flex;
-gap: 0.5rem;
+  padding: 3rem 0;
+  display: flex;
+  gap: 0.5rem;
   div {
     padding: 0 0.5rem;
     width: 80%;
@@ -103,7 +102,7 @@ gap: 0.5rem;
     align-items: center;
     height: 2.5rem;
     border: 1px solid ${colors.gray};
-    svg{
+    svg {
       margin-right: 0.5rem;
       width: 20px;
       height: 20px;
@@ -114,14 +113,14 @@ gap: 0.5rem;
       background: transparent;
       outline: none;
       color: ${colors.white};
-      &::placeholder{
+      &::placeholder {
         color: ${colors.gray};
         font-weight: ;
       }
     }
   }
 
-  button{
+  button {
     background: ${colors.lightBlue};
     border: none;
     color: ${colors.white};
@@ -130,13 +129,12 @@ gap: 0.5rem;
   }
 `;
 
-
 export const LatestResearch = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
   margin-top: 2rem;
-`
+`;
 
 export const LoaderSpinnerContainer = styled.div`
   display: flex;
@@ -144,4 +142,4 @@ export const LoaderSpinnerContainer = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
-`
+`;

@@ -1,12 +1,10 @@
 import { AiOutlineClose, AiOutlineSearch } from 'react-icons/ai'
-import {Rings} from 'react-loader-spinner'
 import {
   ButtonClose,
   ContainerSearchLocation,
   ContentSidebar,
   FooterSidebar,
   HeaderSidebar,
-  LoaderSpinnerContainer,
   MainContentSidebar,
   SearchLocationContent,
   SidebarContainer,
@@ -22,7 +20,7 @@ import { useGetLocationContext } from '../../contexts/GetLocation';
 export function Sidebar() {
   const [searchLocationIsActive, setSearchLocationIsActive] = useState(false)
   const [searchValue, setSearchValue] = useState('')
-  const {location, contextState} = useGetLocationContext()
+  const {location} = useGetLocationContext()
   return (
     
     <SidebarContainer aria-label="Weather Info">
@@ -50,12 +48,7 @@ export function Sidebar() {
       ) : (
         
         <ContentSidebar>
-        {contextState === 'loading' ? (
-          <LoaderSpinnerContainer>
-            <Rings ariaLabel="loading-indicator" color={colors.lightBlue} />
-          </LoaderSpinnerContainer>
-        ) : (
-          <>
+        
           <HeaderSidebar>
             <Button ButtonColor={colors.gray} onClick={() => setSearchLocationIsActive(true)}>Search for places</Button>
             <GeolocationButton />
@@ -74,13 +67,13 @@ export function Sidebar() {
             
              <span>{location?.location.localtime}</span>
              <div>
-               <MdLocationOn /> {location?.location.name}
+               <MdLocationOn /> {location?.location.name} - {location?.location.country}
              </div>
              
            
           </FooterSidebar>
-          </>
-          )}
+        
+
         </ContentSidebar>
       )}
     </SidebarContainer>
