@@ -6,7 +6,7 @@ export interface IHightlightCard {
   title: string;
   mainContent:
     | {
-        text: string;
+        text: string | number | undefined;
         smallText: string;
       }
     | string;

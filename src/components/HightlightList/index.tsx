@@ -1,45 +1,53 @@
+import { useContext } from "react";
+import { GetLocationContext } from "../../contexts/GetLocation";
 import { HightlightCard, IHightlightCard } from "../HightlightCard";
 import { HumidityBar } from "../HumidityBar";
+import { WindIndicator } from "../WindIndicator";
 import { HightlightList, HightlightListContainer } from "./styles";
 
 export const HightlightCardList = () => {
-  const mockInfo: IHightlightCard[] = [
+  const { location } = useContext(GetLocationContext);
+
+  const Cards: IHightlightCard[] = [
     {
       title: "Wind status",
       mainContent: {
-        text: "7",
-        smallText: "mph",
+        text: `${location?.current.wind_kph.toFixed(0)}`,
+        smallText: "kph",
       },
-      footerContent: "WindDirectionComponent",
+      footerContent: (
+        <WindIndicator
+          windDirection={location?.current.wind_dir}
+          windDirectionDeg={location?.current.wind_degree}
+        />
+      ),
     },
     {
       title: "Humidity",
       mainContent: {
-        text: "24",
+        text: location?.current.humidity,
         smallText: "%",
       },
-      footerContent: <HumidityBar percentage={24} />,
+      footerContent: <HumidityBar percentage={location?.current.humidity} />,
     },
     {
       title: "Visibility",
       mainContent: {
-        text: "6,4",
-        smallText: "miles",
+        text: location?.current.vis_km,
+        smallText: "km",
       },
     },
     {
       title: "Air Pressure",
       mainContent: {
-        text: "994",
-        smallText: "mb",
+        text: location?.current.pressure_in.toFixed(0),
+        smallText: "in",
       },
     },
   ];
 
   const handleRenderHightlightCards = () => {
-    return mockInfo.map((info, index) => (
-      <HightlightCard key={index} {...info} />
-    ));
+    return Cards.map((info, index) => <HightlightCard key={index} {...info} />);
   };
 
   return (
