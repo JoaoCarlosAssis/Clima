@@ -94,6 +94,7 @@ export function GetLocationContextProvider({
         )
         .then((response) => setLocation(response.data));
         setSearchLocationIsActive(false)
+        setSearchInput('')
     }
     catch (e) {
       console.log(e)
