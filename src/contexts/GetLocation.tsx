@@ -39,11 +39,11 @@ export const GetLocationContext = createContext({} as GetLocationData);
 export function GetLocationContextProvider({
   children,
 }: GetLocationContextProps) {
-  const [searchLocationIsActive, setSearchLocationIsActive] = useState(false)
+  const [searchLocationIsActive, setSearchLocationIsActive] = useState(false);
   const [location, setLocation] = useState<IGeolocation>();
   const [contextState, setContextState] = useState(States.none);
-  const [buttonStatus, setButtonStatus] = useState(States.none)
-  const [searchInput, setSearchInput] = useState('')
+  const [buttonStatus, setButtonStatus] = useState(States.none);
+  const [searchInput, setSearchInput] = useState("");
   function handleGetLocation() {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
@@ -68,7 +68,7 @@ export function GetLocationContextProvider({
   }
 
   function handleGetCurrentLocation() {
-    setButtonStatus(States.loading)
+    setButtonStatus(States.loading);
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
         async ({ coords }) => {
@@ -77,10 +77,13 @@ export function GetLocationContextProvider({
               `https://api.weatherapi.com/v1/forecast.json?key=661026bef3784058b4b161650220602&q=${coords.latitude},${coords.longitude}&days=5&aqi=yes&alerts=yes`
             )
             .then((response) => setLocation(response.data));
-          setButtonStatus(States.completed)
-        }, function (err) {
-          alert('Para buscar sua posição atual ative a localização do navegador')
-          console.log(err)
+          setButtonStatus(States.completed);
+        },
+        function (err) {
+          alert(
+            "Para buscar sua posição atual ative a localização do navegador"
+          );
+          console.log(err);
         }
       );
     }
@@ -93,22 +96,18 @@ export function GetLocationContextProvider({
           `https://api.weatherapi.com/v1/forecast.json?key=661026bef3784058b4b161650220602&q=${searchInput}&days=1&aqi=yes&alerts=yes`
         )
         .then((response) => setLocation(response.data));
-        setSearchLocationIsActive(false)
-        setSearchInput('')
-    }
-    catch (e) {
-      console.log(e)
+      setSearchLocationIsActive(false);
+      setSearchInput("");
+    } catch (e) {
+      console.log(e);
     }
   }
   useEffect(() => {
     setContextState(States.loading);
 
-    setTimeout(() => {
-      handleGetLocation()
-    }, 1000);
+    handleGetLocation();
   }, []);
 
-  console.log(location)
   return (
     <GetLocationContext.Provider
       value={{
@@ -120,7 +119,7 @@ export function GetLocationContextProvider({
         setSearchInput,
         searchInput,
         searchLocation,
-        searchLocationIsActive, 
+        searchLocationIsActive,
         setSearchLocationIsActive,
       }}
     >
