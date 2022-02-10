@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HightlightListContainer = styled.div`
-  height: 100%;
+  height: 70%;
   & > h1 {
     font-size: 2rem;
     margin-bottom: 25px;
@@ -10,12 +10,12 @@ export const HightlightListContainer = styled.div`
 
 export const HightlightList = styled.section`
   display: grid;
-  grid-template: 1.25fr 1fr / 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(300px, 1fr));
+  grid-template-rows: 1fr 0.75fr;
   height: 90%;
   width: 100%;
   gap: 48px;
-  @media (max-width: 920px) {
-    display: flex;
-    flex-direction: column;
+  @media (max-width: 1200px) {
+    grid-template-columns: 1fr;
   }
 `;
