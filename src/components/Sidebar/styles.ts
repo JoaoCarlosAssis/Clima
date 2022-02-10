@@ -8,9 +8,10 @@ export const SidebarContainer = styled.aside`
   background: ${colors.blue};
 
   padding: 2rem;
-  @media (max-width: 920px){
-  width: 100%;  
-}
+  @media (max-width: 920px) {
+    width: 100%;
+    flex-shrink: 0;
+  }
 `;
 
 export const HeaderSidebar = styled.div`
@@ -115,7 +116,7 @@ export const SearchLocationContent = styled.div`
       color: ${colors.white};
       &::placeholder {
         color: ${colors.gray};
-        font-weight: ;
+        font-weight: 500;
       }
     }
   }
