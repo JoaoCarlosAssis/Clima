@@ -3,7 +3,7 @@ import { colors } from "../../constants/colors";
 
 export const CardContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
   flex: 1;
