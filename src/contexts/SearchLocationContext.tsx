@@ -30,7 +30,7 @@ export const SearchLocationContextProvider: React.FC = ({ children }) => {
       try {
         setSearchState(PromiseStates.loading);
         const { data } = await axios.get(
-          api.url.replace("{{query}}", searchInputRef.current.value)
+          api.url.forecast.replace("{{query}}", searchInputRef.current.value)
         );
         setLocation(data);
         setSearchState(PromiseStates.completed);
