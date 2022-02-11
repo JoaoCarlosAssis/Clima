@@ -1,10 +1,12 @@
+import { IGeolocationForecastDay } from "./IGeolocationForecast";
+
 export interface IGeolocation {
   location: {
     name: string;
     localtime: string;
     localtime_epoch: number;
     country: string;
-  },
+  };
   current: {
     air_quality: { co: number; no2: number; o3: number };
     cloud: number;
@@ -28,5 +30,8 @@ export interface IGeolocation {
     wind_dir: string;
     wind_kph: number;
     wind_mph: number;
+  };
+  forecast: {
+    forecastday: IGeolocationForecastDay[];
   };
 }
