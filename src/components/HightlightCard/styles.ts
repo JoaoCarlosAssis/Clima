@@ -15,6 +15,6 @@ export const HightlightCardFooter = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 40px;
   height: 30px;
 `;
