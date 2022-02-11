@@ -1,17 +1,21 @@
 import { WeatherCardTemp } from "./styles";
 import { Card } from "../Card";
-import ImgTest from "../../assets/Shower.png";
+import { handleFormatDate } from "../../utils/handleFormatDate";
 
 export const WeatherCard: React.FC<{
-  dayOfTheWeek: string;
-  maxTemp: string;
-  minTemp: string;
-}> = ({ dayOfTheWeek, maxTemp, minTemp }) => {
+  epoch: number;
+  imageUrl: string;
+  maxTemp: number;
+  minTemp: number;
+}> = ({ epoch, imageUrl, maxTemp, minTemp }) => {
   return (
-    <Card cardHeader={dayOfTheWeek} cardImage={ImgTest}>
+    <Card
+      cardHeader={handleFormatDate(epoch)}
+      cardImage={`https:${imageUrl.replace("64x64", "128x128")}`}
+    >
       <WeatherCardTemp>
-        <p>{maxTemp}</p>
-        <p>{minTemp}</p>
+        <p>{maxTemp}°C</p>
+        <p>{minTemp}°C</p>
       </WeatherCardTemp>
     </Card>
   );

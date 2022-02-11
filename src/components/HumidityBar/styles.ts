@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { colors } from "../../constants/colors";
 
 export interface IHumidityBar {
-  percentage: number;
+  percentage: number | undefined;
 }
 
 export const BarContainer = styled.div`

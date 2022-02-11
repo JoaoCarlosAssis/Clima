@@ -9,6 +9,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    background: ${colors.darkBlue};
     color: ${colors.white};
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;

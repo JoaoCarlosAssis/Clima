@@ -1,76 +1,96 @@
-import axios from 'axios'
-import { createContext, ReactNode, useContext, useEffect, useState } from 'react'
-
+import axios from "axios";
+import {
+  createContext,
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { api } from "../constants/api";
+import { PromiseStates } from "../enums/PromiseStates";
+import { IGeolocation } from "../interfaces/IGeolocation";
 
 interface GetLocationContextProps {
-  children: ReactNode
-}
-
-type LocationData = {
-  location: {
-    name: string
-    localtime: string
-  },
-  current: {
-    condition: {
-      icon: string
-      text: string
-    }
-  }
+  children: ReactNode;
 }
 
 interface GetLocationData {
-  location: LocationData | undefined,
-  contextState: States
+  location: IGeolocation | undefined;
+  setLocation: Dispatch<SetStateAction<IGeolocation | undefined>>;
+  contextState: PromiseStates;
+  handleGetLocation: () => Promise<void>;
+  handleGetCurrentLocation: (onComplete?: () => void) => Promise<void>;
 }
 
-export enum States {
-  none,
-  loading = "loading",
-  completed = "completed",
-  error = "error"
-}
+export const GetLocationContext = createContext({} as GetLocationData);
 
+export function GetLocationContextProvider({
+  children,
+}: GetLocationContextProps) {
+  const [location, setLocation] = useState<IGeolocation>();
+  const [contextState, setContextState] = useState(PromiseStates.none);
 
-export const GetLocationContext = createContext({} as GetLocationData)
+  const handleFetchLocation = async (coords?: GeolocationCoordinates) => {
+    const fallbackLocation = "divinopolis";
+    const query = coords
+      ? `${coords?.latitude}, ${coords?.longitude}`
+      : fallbackLocation;
 
-export function GetLocationContextProvider({ children }: GetLocationContextProps) {
-  const [location, setLocation] = useState<LocationData>()
-  const [contextState, setContextState] = useState(States.none)
+    const { data } = await axios.get<IGeolocation>(
+      api.url.forecast.replace("{{query}}", query)
+    );
+    setLocation(data);
+    setContextState(PromiseStates.completed);
+  };
 
+  const handleGetLocation = async () => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        async ({ coords }) => await handleFetchLocation(coords),
+        async () => await handleFetchLocation()
+      );
+    }
+  };
 
+  const handleGetCurrentLocation = async (onComplete?: () => void) => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        async ({ coords }) => {
+          await handleFetchLocation(coords);
+          onComplete && onComplete();
+        },
+        () => {
+          alert(
+            "Para buscar sua posição atual ative a localização do navegador"
+          );
+          onComplete && onComplete();
+        }
+      );
+    }
+  };
 
   useEffect(() => {
-    setContextState(States.loading)
+    setContextState(PromiseStates.loading);
+    handleGetLocation();
+  }, []);
 
-    setTimeout(() => {
-      if ('geolocation' in navigator) {
-        navigator.geolocation.getCurrentPosition(async ({ coords }) => {
-          await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=661026bef3784058b4b161650220602&q=${coords.latitude},${coords.longitude}&days=5&aqi=yes&alerts=yes`)
-            .then(response => setLocation(response.data))
-            setContextState(States.completed)
-        }, async function (err) {
-          await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=661026bef3784058b4b161650220602&q=paris&days=5&aqi=yes&alerts=yes`)
-            .then(response => setLocation(response.data))
-            setContextState(States.completed)
-        })
-      }
-    }, 5000);
-    
-   
-  }, [])
   return (
-    <GetLocationContext.Provider value={{
-      location,
-      contextState
-
-    }}>
+    <GetLocationContext.Provider
+      value={{
+        location,
+        setLocation,
+        handleGetCurrentLocation,
+        contextState,
+        handleGetLocation,
+      }}
+    >
       {children}
     </GetLocationContext.Provider>
-  )
+  );
 }
-
 
 export const useGetLocationContext = () => {
-  return useContext(GetLocationContext)
-}
+  return useContext(GetLocationContext);
+};
