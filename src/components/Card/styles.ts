@@ -12,9 +12,9 @@ export const CardContainer = styled.div`
 `;
 
 export const CardTitle = styled.h1`
-  font-size: 1.8vw;
+  font-size: 2rem;
   font-weight: 500;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   white-space: nowrap;
 `;
 
