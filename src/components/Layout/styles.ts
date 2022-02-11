@@ -21,5 +21,5 @@ export const Main = styled.main`
     padding: 150px 125px;
     padding-top: 45px;
   }
-  padding: 50px;
+  padding: 28px;
 `;
