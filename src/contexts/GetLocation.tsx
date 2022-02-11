@@ -33,12 +33,13 @@ export function GetLocationContextProvider({
   const [contextState, setContextState] = useState(PromiseStates.none);
 
   const handleFetchLocation = async (coords?: GeolocationCoordinates) => {
+    const fallbackLocation = "divinopolis";
     const query = coords
       ? `${coords?.latitude}, ${coords?.longitude}`
-      : "divinopolis";
+      : fallbackLocation;
 
     const { data } = await axios.get<IGeolocation>(
-      api.url.replace("{{query}}", query)
+      api.url.forecast.replace("{{query}}", query)
     );
     setLocation(data);
     setContextState(PromiseStates.completed);
@@ -58,6 +59,7 @@ export function GetLocationContextProvider({
       navigator.geolocation.getCurrentPosition(
         async ({ coords }) => {
           await handleFetchLocation(coords);
+          onComplete && onComplete();
         },
         () => {
           alert(

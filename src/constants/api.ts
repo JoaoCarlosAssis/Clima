@@ -1,3 +1,7 @@
 export const api = {
-  url: "/api/weather?q={{query}}",
+  url: {
+    current: "/api/weather?type=current&q={{query}}",
+    forecast: "/api/weather?type=forecast&days=3&q={{query}}",
+    search: "/api/weather?type=search&q={{query}}",
+  },
 };
