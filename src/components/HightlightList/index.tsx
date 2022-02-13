@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { GetLocationContext } from "../../contexts/GetLocation";
+import { UnitContext } from "../../contexts/UnitContext";
 import { HightlightCard, IHightlightCard } from "../HightlightCard";
 import { HumidityBar } from "../HumidityBar";
 import { WindIndicator } from "../WindIndicator";
@@ -7,13 +8,16 @@ import { HightlightList, HightlightListContainer } from "./styles";
 
 export const HightlightCardList = () => {
   const { location } = useContext(GetLocationContext);
+  const { handleGetMeasure } = useContext(UnitContext);
+
+  const currentMeasures = handleGetMeasure();
 
   const Cards: IHightlightCard[] = [
     {
       title: "Wind status",
       mainContent: {
-        text: `${location?.current.wind_kph.toFixed(0)}`,
-        smallText: "kph",
+        text: `${location?.current[`wind_${currentMeasures.velocity}`]}`,
+        smallText: currentMeasures.velocity,
       },
       footerContent: (
         <WindIndicator
@@ -33,15 +37,15 @@ export const HightlightCardList = () => {
     {
       title: "Visibility",
       mainContent: {
-        text: location?.current.vis_km,
-        smallText: "km",
+        text: `${location?.current[`vis_${currentMeasures.distance}`]}`,
+        smallText: currentMeasures.distance,
       },
     },
     {
       title: "Air Pressure",
       mainContent: {
-        text: location?.current.pressure_in.toFixed(0),
-        smallText: "in",
+        text: `${location?.current[`pressure_${currentMeasures.pressure}`]}`,
+        smallText: currentMeasures.pressure,
       },
     },
   ];
