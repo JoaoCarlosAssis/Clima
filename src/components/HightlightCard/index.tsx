@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { UnitContextProvider } from "../../contexts/UnitContext";
 import { Card } from "../Card";
 import { HightlightCardFooter, HightlightCardText } from "./styles";
 
@@ -19,18 +20,20 @@ export const HightlightCard: React.FC<IHightlightCard> = ({
   footerContent,
 }) => {
   return (
-    <Card cardHeader={title}>
-      {typeof mainContent !== "string" ? (
-        <HightlightCardText>
-          {mainContent.text}
-          <small>{mainContent.smallText}</small>
-        </HightlightCardText>
-      ) : (
-        <HightlightCardText>{mainContent}</HightlightCardText>
-      )}
-      {footerContent && (
-        <HightlightCardFooter>{footerContent}</HightlightCardFooter>
-      )}
-    </Card>
+    <UnitContextProvider>
+      <Card cardHeader={title}>
+        {typeof mainContent !== "string" ? (
+          <HightlightCardText>
+            {mainContent.text}
+            <small>{mainContent.smallText}</small>
+          </HightlightCardText>
+        ) : (
+          <HightlightCardText>{mainContent}</HightlightCardText>
+        )}
+        {footerContent && (
+          <HightlightCardFooter>{footerContent}</HightlightCardFooter>
+        )}
+      </Card>
+    </UnitContextProvider>
   );
 };

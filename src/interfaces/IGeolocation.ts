@@ -8,6 +8,7 @@ export interface IGeolocation {
     country: string;
   };
   current: {
+    [key: string]: unknown;
     air_quality: { co: number; no2: number; o3: number };
     cloud: number;
     condition: { text: string; icon: string; code: number };
