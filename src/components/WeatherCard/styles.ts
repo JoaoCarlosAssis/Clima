@@ -10,6 +10,13 @@ export const WeatherCardTemp = styled.div`
   margin-top: 25px;
   padding: 0 20px;
   font-weight: 700;
+
+  p {
+    span {
+      text-transform: uppercase;
+    }
+  }
+
   p:last-of-type {
     font-weight: 500;
     color: ${colors.gray};
