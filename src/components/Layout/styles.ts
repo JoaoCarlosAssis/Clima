@@ -12,13 +12,14 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.main`
+  height: 100%;
   @media (min-width: 920px) {
     overflow-y: scroll;
     display: flex;
     width: 100%;
     height: 100%;
     flex-direction: column;
-    padding: 150px 125px;
+    padding: 50px 125px;
     padding-top: 45px;
   }
   padding: 28px;
