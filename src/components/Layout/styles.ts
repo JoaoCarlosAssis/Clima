@@ -12,7 +12,12 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 100%;
   height: 100%;
+  padding: 0.5rem;
   @media (min-width: 920px) {
     overflow-y: scroll;
     display: flex;
@@ -22,5 +27,7 @@ export const Main = styled.main`
     padding: 50px 125px;
     padding-top: 45px;
   }
-  padding: 28px;
+  @media (max-width: 280px){
+    width: 107%;
+  }
 `;

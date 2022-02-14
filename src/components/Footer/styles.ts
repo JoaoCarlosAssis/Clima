@@ -5,13 +5,15 @@ export const FooterContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 2rem auto;
+  padding: 1rem;
   color: #ffffff;
   background: ${colors.blue};
   width: 100%;
-  @media (max-width: 920px) {
+  margin-top: 3rem;
+  @media (max-width: 1180px) {
     display: flex;
     flex-direction: column;
+    gap: 2rem;
   }
   span {
     color: ${colors.lightGrey};
@@ -26,10 +28,10 @@ export const FooterContent = styled.div`
   div + div {
     display: flex;
     gap: 1rem;
-    @media (max-width: 920px) {
-      display: flex;
+    @media (max-width: 350px) {
       flex-direction: column;
     }
+
     a {
       display: flex;
       align-items: center;
