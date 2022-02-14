@@ -10,14 +10,9 @@ import { LoaderSpinnerContainer } from "../Sidebar/styles";
 import { InputItem, InputSelectContainer } from "./styles"
 
 export function InputSelect() {
-
-
-  const ItensLocation = ['london', 'paris', 'Nova serrana']
-
   const { setSearchLocationIsActive } = useSidebarContext();
   const { setLocation } = useGetLocationContext();
-  const { setSearchState, searchState } = useSearchLocationContext()
-
+  const { setSearchState, searchState, dateHistory } = useSearchLocationContext()
 
   async function searchLocation(item: string) {
     if (item) {
@@ -34,7 +29,6 @@ export function InputSelect() {
         console.log(e);
       }
     }
-
   }
 
   return (
@@ -51,7 +45,7 @@ export function InputSelect() {
       ) : (
         <>
           <InputSelectContainer>
-            {ItensLocation.map(item => (
+            {dateHistory?.map(item => (
               <InputItem key={item} onClick={() => searchLocation(item)}>{item}</InputItem>
             ))}
           </InputSelectContainer>

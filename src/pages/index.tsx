@@ -12,7 +12,7 @@ const Home: NextPage = () => {
       <UnitContextProvider>
         <Layout>
           <Head>
-            <title>Weather - Home</title>
+            <title>FastWeather - Home</title>
           </Head>
           <WeatherCardList />
           <HightlightCardList />
