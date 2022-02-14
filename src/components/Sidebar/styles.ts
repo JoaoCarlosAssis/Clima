@@ -9,7 +9,7 @@ export const SidebarContainer = styled.aside`
 
   padding: 2rem;
   @media (max-width: 920px) {
-    width: 100%;
+    width: 100vw;
     flex-shrink: 0;
   }
 `;
