@@ -1,32 +1,63 @@
-import { useState } from "react"
-import { InputBtn, InputContent, InputItem, InputSelectContainer } from "./styles"
-import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io"
+import axios from "axios";
+import { Rings } from "react-loader-spinner";
+import { api } from "../../constants/api";
+import { colors } from "../../constants/colors";
+import { useGetLocationContext } from "../../contexts/GetLocation";
+import { useSearchLocationContext } from "../../contexts/SearchLocationContext";
+import { useSidebarContext } from "../../contexts/SidebarContext";
+import { PromiseStates } from "../../enums/PromiseStates";
+import { LoaderSpinnerContainer } from "../Sidebar/styles";
+import { InputItem, InputSelectContainer } from "./styles"
 
 export function InputSelect() {
-  const [isActive, setIsActive] = useState(false)
-  const [selectedItemCity, setSelectedItemCity] = useState('London')
 
-  function handleItemSelect(location: string){
-    setSelectedItemCity(location)
-    setIsActive(false)
+
+  const ItensLocation = ['london', 'paris', 'Nova serrana']
+
+  const { setSearchLocationIsActive } = useSidebarContext();
+  const { setLocation } = useGetLocationContext();
+  const { setSearchState, searchState } = useSearchLocationContext()
+
+
+  async function searchLocation(item: string) {
+    if (item) {
+      try {
+        setSearchState(PromiseStates.loading);
+        const { data } = await axios.get(
+          api.url.forecast.replace("{{query}}", item)
+        );
+        setLocation(data);
+
+        setSearchState(PromiseStates.completed);
+        setSearchLocationIsActive(false);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
   }
-  return (
-    <InputSelectContainer>
-      <InputBtn onClick={() => setIsActive(!isActive)}>
-        {selectedItemCity}
-        {isActive ? (
-          <span><IoMdArrowDropup /></span>
-        ) : (
-          <span><IoMdArrowDropdown /></span>
-        )}
 
-      </InputBtn>
-      {isActive && (
-        <InputContent className="inputContent">
-          <InputItem onClick={() => handleItemSelect('Barcelona')}>Barcelona</InputItem>
-          <InputItem onClick={() => handleItemSelect('Long Beach')}>Long Beach</InputItem>
-        </InputContent>
+  return (
+    <>
+      {searchState === "loading" ? (
+        <LoaderSpinnerContainer>
+          <Rings
+            ariaLabel="loading-indicator"
+            color={colors.lightBlue}
+            width={200}
+            height={200}
+          />
+        </LoaderSpinnerContainer>
+      ) : (
+        <>
+          <InputSelectContainer>
+            {ItensLocation.map(item => (
+              <InputItem key={item} onClick={() => searchLocation(item)}>{item}</InputItem>
+            ))}
+          </InputSelectContainer>
+        </>
       )}
-    </InputSelectContainer>
+    </>
+
   )
 }

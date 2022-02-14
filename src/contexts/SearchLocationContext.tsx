@@ -2,7 +2,9 @@ import axios from "axios";
 import {
   createContext,
   createRef,
+  Dispatch,
   RefObject,
+  SetStateAction,
   useContext,
   useState,
 } from "react";
@@ -15,6 +17,7 @@ interface ISearchLocation {
   searchState: PromiseStates;
   searchLocation(): Promise<void>;
   searchInputRef: RefObject<HTMLInputElement>;
+  setSearchState: Dispatch<SetStateAction<PromiseStates>>
 }
 
 export const SearchLocationContext = createContext({} as ISearchLocation);
@@ -47,6 +50,7 @@ export const SearchLocationContextProvider: React.FC = ({ children }) => {
         searchState,
         searchLocation,
         searchInputRef,
+        setSearchState
       }}
     >
       {children}
