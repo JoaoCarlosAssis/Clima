@@ -7,12 +7,13 @@ import { useSearchLocationContext } from "../../contexts/SearchLocationContext";
 import { useSidebarContext } from "../../contexts/SidebarContext";
 import { PromiseStates } from "../../enums/PromiseStates";
 import { LoaderSpinnerContainer } from "../Sidebar/styles";
-import { InputItem, InputSelectContainer } from "./styles"
+import { InputItem, InputSelectContainer } from "./styles";
 
 export function InputSelect() {
   const { setSearchLocationIsActive } = useSidebarContext();
   const { setLocation } = useGetLocationContext();
-  const { setSearchState, searchState, dateHistory } = useSearchLocationContext()
+  const { setSearchState, searchState, dateHistory } =
+    useSearchLocationContext();
 
   async function searchLocation(item: string) {
     if (item) {
@@ -44,14 +45,16 @@ export function InputSelect() {
         </LoaderSpinnerContainer>
       ) : (
         <>
+          <h2>Previous Searches</h2>
           <InputSelectContainer>
-            {dateHistory?.map(item => (
-              <InputItem key={item} onClick={() => searchLocation(item)}>{item}</InputItem>
+            {dateHistory?.history?.map((item) => (
+              <InputItem key={item} onClick={() => searchLocation(item)}>
+                {item}
+              </InputItem>
             ))}
           </InputSelectContainer>
         </>
       )}
     </>
-
-  )
+  );
 }
