@@ -17,10 +17,13 @@
 - [Como iniciar](#como-iniciar)
   - [Desenvolvimento](#desenvolvimento)
   - [Produção](#produção)
+- [Contribuidores](#contribuidores)
 
 ## Sobre
 
-Fast Weather exibe informações sobre como temperatura, humidade, pressão do ar e informações sobre o vento. Também como uma previsão dos proximos 3 dias.
+Fast Weather exibe informações sobre a temperatura, humidade, pressão do ar e informações sobre o vento. Também é possivel obter uma previsão dos proximos 3 dias com informações da temperatura e clima.
+
+O website exibe as informações com base na localização do usuário ou com relação a um campo de buscas preenchido pelo usuário.
 
 ## Demo
 
@@ -59,10 +62,10 @@ Em ambiente de produção primeiro é necessario buildar o projeto e em seguida 
 
 ## Contribuidores
 
-Pessoas que ajudaram a estruturar e desenvolver o projeto:
+Pessoas que ajudaram a desenvolver o projeto com alguma contribuição:
 
 <a href="https://github.com/JoaoCarlosAssis/Clima/graphs/contributors">
   <img width="100" src="https://contrib.rocks/image?repo=JoaoCarlosAssis/Clima" />
 </a>
 
-> Imagens criadas com [contrib.rocks](https://contrib.rocks).
+Criado com [contrib.rocks](https://contrib.rocks).
