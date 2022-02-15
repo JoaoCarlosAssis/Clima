@@ -19,6 +19,7 @@ import { useSidebarContext } from "../../contexts/SidebarContext";
 import { useSearchLocationContext } from "../../contexts/SearchLocationContext";
 import { useContext } from "react";
 import { UnitContext } from "../../contexts/UnitContext";
+import { handleFormatDate } from "../../utils/handleFormatDate";
 
 export function Sidebar() {
   const { location } = useGetLocationContext();
@@ -78,7 +79,10 @@ export function Sidebar() {
           </MainContentSidebar>
 
           <FooterSidebar>
-            <span>{location?.location.localtime}</span>
+            <span>
+              Today •{" "}
+              {handleFormatDate(location?.location.localtime_epoch ?? 0)}
+            </span>
             <div>
               <MdLocationOn /> {location?.location.name} -{" "}
               {location?.location.country}
