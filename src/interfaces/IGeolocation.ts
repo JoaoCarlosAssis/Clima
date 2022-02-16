@@ -6,6 +6,7 @@ export interface IGeolocation {
     localtime: string;
     localtime_epoch: number;
     country: string;
+    region: string;
   };
   current: {
     [key: string]: unknown;

@@ -85,7 +85,7 @@ export function Sidebar() {
             </span>
             <div>
               <MdLocationOn /> {location?.location.name} -{" "}
-              {location?.location.country}
+              {location?.location.region}
             </div>
           </FooterSidebar>
         </ContentSidebar>
