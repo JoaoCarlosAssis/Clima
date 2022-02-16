@@ -1,10 +1,10 @@
-import { MeasurementSelector } from "../MeasureSelector";
+import { UnitsSelector } from "../UnitsSelector";
 import { HeaderContainer } from "./styles";
 
 export const Header = () => {
   return (
     <HeaderContainer>
-      <MeasurementSelector />
+      <UnitsSelector />
     </HeaderContainer>
   );
 };

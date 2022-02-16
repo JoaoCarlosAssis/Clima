@@ -17,14 +17,18 @@ import { GeolocationButton } from "../GeolocationButton";
 import { useGetLocationContext } from "../../contexts/GetLocation";
 import { useSidebarContext } from "../../contexts/SidebarContext";
 import { useSearchLocationContext } from "../../contexts/SearchLocationContext";
+import { useContext } from "react";
+import { UnitContext } from "../../contexts/UnitContext";
+import { handleFormatDate } from "../../utils/handleFormatDate";
 
 export function Sidebar() {
   const { location } = useGetLocationContext();
-
   const { searchInputRef, searchLocation } = useSearchLocationContext();
-
   const { searchLocationIsActive, setSearchLocationIsActive } =
     useSidebarContext();
+  const { handleGetMeasure } = useContext(UnitContext);
+
+  const currentMeasures = handleGetMeasure();
 
   return (
     <SidebarContainer aria-label="Weather Info">
@@ -68,16 +72,20 @@ export function Sidebar() {
             />
 
             <strong>
-              15<span>ºc</span>
+              {location?.current[`temp_${currentMeasures.temperature}`]}
+              <span>º{currentMeasures.temperature}</span>
             </strong>
             <p>{location?.current.condition.text}</p>
           </MainContentSidebar>
 
           <FooterSidebar>
-            <span>{location?.location.localtime}</span>
+            <span>
+              Today •{" "}
+              {handleFormatDate(location?.location.localtime_epoch ?? 0)}
+            </span>
             <div>
               <MdLocationOn /> {location?.location.name} -{" "}
-              {location?.location.country}
+              {location?.location.region}
             </div>
           </FooterSidebar>
         </ContentSidebar>

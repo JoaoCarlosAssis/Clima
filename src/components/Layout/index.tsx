@@ -7,6 +7,7 @@ import { colors } from "../../constants/colors";
 import { useGetLocationContext } from "../../contexts/GetLocation";
 import { SidebarContextProvider } from "../../contexts/SidebarContext";
 import { SearchLocationContextProvider } from "../../contexts/SearchLocationContext";
+import { FooterContainer } from "../Footer";
 
 export const Layout: React.FC = ({ children }) => {
   const { contextState } = useGetLocationContext();
@@ -31,6 +32,7 @@ export const Layout: React.FC = ({ children }) => {
           <Main>
             <Header />
             {children}
+          <FooterContainer/>
           </Main>
         </>
       )}

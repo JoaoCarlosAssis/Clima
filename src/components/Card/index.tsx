@@ -3,7 +3,7 @@ import Image from "next/image";
 
 interface ICard {
   cardHeader: string;
-  cardImage?: StaticImageData;
+  cardImage?: string;
 }
 
 export const Card: React.FC<ICard> = ({ cardHeader, cardImage, children }) => {
@@ -12,7 +12,7 @@ export const Card: React.FC<ICard> = ({ cardHeader, cardImage, children }) => {
       <CardTitle>{cardHeader}</CardTitle>
       {cardImage && (
         <CardImage>
-          <Image sizes="10vw" layout="responsive" src={cardImage} />
+          <Image layout="responsive" width={100} height={100} src={cardImage} />
         </CardImage>
       )}
       {children}

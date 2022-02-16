@@ -2,6 +2,7 @@ export interface IGeolocationForecastDay {
   date: string;
   date_epoch: number;
   day: {
+    [key: string]: unknown;
     maxtemp_c: number;
     maxtemp_f: number;
     mintemp_c: number;

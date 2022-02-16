@@ -6,8 +6,10 @@ export interface IGeolocation {
     localtime: string;
     localtime_epoch: number;
     country: string;
+    region: string;
   };
   current: {
+    [key: string]: unknown;
     air_quality: { co: number; no2: number; o3: number };
     cloud: number;
     condition: { text: string; icon: string; code: number };

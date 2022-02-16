@@ -13,10 +13,10 @@ export const SelectorItem = styled.div<ISelectorItem>`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 2.8rem;
   height: 2.8rem;
   margin-left: 15px;
-  border-radius: 50%;
+  padding: 20px;
+  border-radius: 5px;
   background: ${({ isSelected }) => (isSelected ? colors.white : colors.blue)};
   color: ${({ isSelected }) => (isSelected ? colors.black : colors.white)};
   font-weight: bold;
