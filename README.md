@@ -29,6 +29,8 @@ O website exibe as informações com base na localização do usuário ou com re
 
 <img src=".github/assets/home.png" alt="Pagina inicial" />
 
+[Preview](https://clima-nu.vercel.app/)
+
 ## Tecnologias
 
 - React
